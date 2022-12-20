@@ -291,7 +291,7 @@ const UI = {
 
             // 插入页面
             // 目前看来第一个<section class="bili-grid short-margin grid-anchor">是首屏的推荐模块，我们直接插在她下面就可以了
-            const anchor = document.querySelector('.bili-grid.short-margin.grid-anchor');
+            const anchor = document.querySelector('.fixed-channel-shim');
             if (!anchor) {
                 throw new Error(`${LOG_PREFIX} 无法定位首屏推荐模块 <section class="bili-grid short-margin grid-anchor">`)
             }
