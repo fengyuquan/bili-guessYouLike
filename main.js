@@ -27,6 +27,17 @@ const moduleTemplate = `
 			</div>
 			<div class="bangumi-activity-body">
 			</div>
+            <button class="primary-btn roll-btn" 
+            style="
+                position: absolute;
+                right: 0;
+                margin-top: -100px;
+            ">
+                <svg style="transform: rotate(0deg);">
+                    <use xlink:href="#widget-roll"></use>
+                </svg>
+                <span>换一换</span>
+            </button>
 		</div>
 	</div>`;
 
@@ -320,15 +331,17 @@ const UI = {
       node.style.marginBottom = "50px";
 
       // 给「换一换」按钮绑定事件
-      const changeBtn = node.querySelector(".primary-btn.roll-btn");
+      const changeBtn = node.querySelectorAll(".primary-btn.roll-btn");
       // 点这个按钮就通知插件换一批推荐视频
-      changeBtn.addEventListener("click", () => {
-        window.postMessage(
-          {
-            type: "UPDATE_RECOMMANDS",
-          },
-          "*"
-        );
+      changeBtn.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          window.postMessage(
+            {
+              type: "UPDATE_RECOMMANDS",
+            },
+            "*"
+          );
+        });
       });
 
       // 插入页面
